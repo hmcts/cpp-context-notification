@@ -1,0 +1,37 @@
+package uk.gov.moj.cpp.notification.queryapi.accesscontrol;
+
+import uk.gov.moj.cpp.accesscontrol.drools.Outcome;
+import uk.gov.moj.cpp.accesscontrol.drools.Action;
+import uk.gov.moj.cpp.notification.query.api.accesscontrol.RuleConstants;
+
+global uk.gov.moj.cpp.accesscontrol.common.providers.UserAndGroupProvider userAndGroupProvider;
+global uk.gov.moj.cpp.notification.common.accesscontrol.SubscriptionOwnerProvider subscriptionOwnerProvider;
+
+rule "User must be logged in to get events"
+  when
+    $outcome: Outcome();
+    $action: Action(name == "notification.get-events");
+    eval(userAndGroupProvider.hasPermission($action, RuleConstants.getNonCpsDocumentPermission())) or
+    eval($action.userId().isPresent() && subscriptionOwnerProvider.isSubscriptionOwner($action));
+  then
+    $outcome.setSuccess(true);
+end
+
+rule "User must be logged in to get events metadata"
+  when
+    $outcome: Outcome();
+    $action: Action(name == "notification.get-events-metadata");
+    eval($action.userId().isPresent() && subscriptionOwnerProvider.isSubscriptionOwner($action));
+  then
+    $outcome.setSuccess(true);
+end
+
+rule "Only system users can get subscriptions"
+  when
+    $outcome: Outcome();
+    $action: Action(name == "notification.get-subscription" || name == "notification.find-expired-subscriptions");
+    eval($action.userId().isPresent());
+    eval(userAndGroupProvider.isSystemUser($action));
+  then
+    $outcome.setSuccess(true);
+end

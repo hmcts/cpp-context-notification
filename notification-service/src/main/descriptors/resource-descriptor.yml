@@ -1,0 +1,59 @@
+--
+resource_descriptor:
+  spec_version: '1.0.0'
+  version: '${project.version}'
+
+  resources:
+    - name: java:/app/notification-service/DS.eventstore
+      type: xa-datasource
+      setup:
+        - type: liquibase
+          maven:
+            groupId: uk.gov.justice.services
+            artifactId: event-repository-liquibase
+            type: jar
+            version: '${cpp.framework.version}'
+        - type: liquibase
+          maven:
+            groupId: uk.gov.justice.services
+            artifactId: aggregate-snapshot-repository-liquibase
+            type: jar
+            version: '${project.version}'
+
+    - name: java:/DS.notification
+      type: xa-datasource
+      setup:
+        - type: liquibase
+          maven:
+            groupId: uk.gov.justice.services
+            artifactId: event-buffer-liquibase
+            type: jar
+            version: '${cpp.framework.version}'
+        - type: liquibase
+          maven:
+            groupId: uk.gov.moj.cpp.notification
+            artifactId: notification-viewstore-liquibase
+            type: jar
+            version: '${project.version}'
+
+
+    - name: notification.handler.command
+      type: queue
+    - name: notification.event
+      type: topic
+    - name: public.event
+      type: topic
+
+  services:
+    # Notifcation provides these service mappings
+    - name: 'notification-service'
+      id: 'notification_service'
+      target: '/notification-service'
+      map:
+        - '/notification-command-api'
+        - '/notification-command-handler'
+        - '/notification-event-listener'
+        - '/notification-event-processor'
+        - '/notification-query-api'
+        - '/notification-query-view'
+      matcher: '/notification-[^/]+'

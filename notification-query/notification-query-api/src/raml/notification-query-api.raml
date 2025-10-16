@@ -1,0 +1,74 @@
+#%RAML 0.8
+title: Notification Query Api
+version: v0.1
+protocols: [ HTTP, HTTPS ]
+
+baseUri: http://localhost:8080/notification-query-api/query/api/rest/notifications
+
+/subscriptions/{subscriptionId}/events:
+  uriParameters:
+    subscriptionId:
+      description: The subscription id of the events to be returned
+      type: string
+  get:
+    description: |
+      Returns events based on subscription id.
+      ...
+      (mapping):
+        responseType: application/vnd.notification.events+json
+        name: notification.get-events
+      (mapping):
+        responseType: application/vnd.notification.events.metadata+json
+        name: notification.get-events-metadata
+      ...
+    queryParameters:
+        clientCorrelationId:
+          type: string
+          example: b44fa9bb-dc36-4375-83a9-ff1bc4cd4374
+          required: false
+    responses:
+      200:
+        body:
+          application/vnd.notification.events+json:
+            schema: !include json/schema/notification.events.json
+            example: !include json/notification.events.json
+          application/vnd.notification.events.metadata+json:
+            schema: !include json/schema/notification.events.json
+            example: !include json/notification.events.json
+
+/subscriptions/{subscriptionId}:
+  uriParameters:
+    subscriptionId:
+      description: The id of the subscription to be returned
+      type: string
+  get:
+    description: |
+      Returns the subscription for this subscription id.
+      ...
+      (mapping):
+        responseType: application/vnd.notification.subscription+json
+        name: notification.get-subscription
+      ...
+    responses:
+      200:
+        body:
+          application/vnd.notification.subscription+json:
+            schema: !include json/schema/notification.subscription.json
+            example: !include json/notification.subscription.json
+
+
+/subscriptions/expired-subscriptions:
+  get:
+    description: |
+      Returns the subscriptions which have expired.
+      ...
+      (mapping):
+        responseType: application/vnd.notification.expired.subscriptions+json
+        name: notification.find-expired-subscriptions
+      ...
+    responses:
+      200:
+        body:
+          application/vnd.notification.expired.subscriptions+json:
+            schema: !include json/schema/notification.expired.subscriptions.json
+            example: !include json/notification.expired.subscriptions.json

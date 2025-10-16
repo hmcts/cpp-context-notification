@@ -1,0 +1,24 @@
+{
+  "permissions": [
+    {
+      "object": "PetForm",
+      "action": "GrantAccess"
+    },
+    {
+      "object": "BCM",
+      "action": "View"
+    },
+    {
+      "object": "NonCpsDocument",
+      "action": "Upload"
+    },
+    {
+      "object": "NonCpsDocument",
+      "action": "View"
+    },
+    {
+      "object": "NonCpsDocument",
+      "action": "Download"
+    }
+  ]
+}

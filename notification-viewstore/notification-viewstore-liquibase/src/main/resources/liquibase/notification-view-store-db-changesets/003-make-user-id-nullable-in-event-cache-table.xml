@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+    <changeSet id="3" author="TechPod"
+               logicalFilePath="003-make-user-id-nullable-in-event-cache-table.xml">
+
+        <dropNotNullConstraint tableName="event_cache" columnName="user_id" columnDataType="uuid"/>
+
+    </changeSet>
+</databaseChangeLog>

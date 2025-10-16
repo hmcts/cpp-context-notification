@@ -1,0 +1,13 @@
+{
+  "_metadata": {
+    "name": "notification.filter-updated"
+  },
+  "modified": "2018-03-16T15:57:10.503Z",
+  "filter": {
+    "type": "FIELD",
+    "name": "USER_ID",
+    "value": "2c2f4447-f54a-4c93-8981-bf7e074cbf84",
+    "operation": "EQUALS"
+  },
+  "subscriptionId": "d06f6539-2a7c-4bc8-bca3-f1b17ebcfa47"
+}

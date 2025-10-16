@@ -1,0 +1,28 @@
+#%RAML 0.8
+title: Notification - Command API
+
+baseUri: http://localhost:8080/notification-command-api/command/api/rest/notification
+
+/subscriptions/{subscriptionId}:
+  uriParameters:
+    subscriptionId:
+      description: The ID of the subscription resource being modified
+  post:
+    description: |
+      ...
+      (mapping):
+          requestType: application/vnd.notification.subscribe-by-user-id+json
+          name: notification.subscribe-by-user-id
+      (mapping):
+          requestType: application/vnd.notification.unsubscribe+json
+          name: notification.unsubscribe
+      (mapping):
+          requestType: application/vnd.notification.filter+json
+          name: notification.subscription-filter
+      ...
+    body:
+      application/vnd.notification.subscribe-by-user-id+json: !!null
+      application/vnd.notification.unsubscribe+json: !!null
+      application/vnd.notification.filter+json:
+            schema: !include json/schema/notification.filter.json
+            example: !include json/notification.filter.json

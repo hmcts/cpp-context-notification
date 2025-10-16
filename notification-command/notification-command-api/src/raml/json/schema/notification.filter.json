@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://justice.gov.uk/json/schemas/commands/notification/filter.json",
+  "type": "object",
+  "$ref":"http://justice.gov.uk/json/schemas/values/notification/filter.json"
+}

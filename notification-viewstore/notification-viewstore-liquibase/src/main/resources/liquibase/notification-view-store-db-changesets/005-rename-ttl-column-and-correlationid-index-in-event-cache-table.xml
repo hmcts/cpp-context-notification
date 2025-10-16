@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+    <changeSet id="5" author="TechPod"
+               logicalFilePath="005-rename-ttl-column-and-correlationid-index-in-event-cache-table.xml">
+
+        <renameColumn newColumnName="time_to_live_seconds"
+                      oldColumnName="ttl"
+                      tableName="event_cache"/>
+
+        <dropIndex tableName="event_cache" indexName="correlationid_idx"></dropIndex>
+
+        <createIndex tableName="event_cache" indexName="client_correlation_id_idx">
+            <column name="client_correlation_id"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

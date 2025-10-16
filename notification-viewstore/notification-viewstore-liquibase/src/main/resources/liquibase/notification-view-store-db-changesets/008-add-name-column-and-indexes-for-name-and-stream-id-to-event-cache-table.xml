@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+    <changeSet id="8" author="TechPod"
+               logicalFilePath="008-add-event-name-column-and-indexes-for-event-name-and-stream-id-to-event-cache-table.xml">
+
+        <validCheckSum>7:9b1017540d1e2bd1848c98d6b36a4846</validCheckSum>
+
+        <addColumn tableName="event_cache">
+            <column name="name" type="text">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+
+        <sql dbms="h2">
+            ALTER TABLE event_cache ALTER COLUMN name VARCHAR(255);
+        </sql>
+
+        <createIndex tableName="event_cache" indexName="name_idx">
+            <column name="name"/>
+        </createIndex>
+
+        <createIndex tableName="event_cache" indexName="stream_id_idx">
+            <column name="stream_id"/>
+        </createIndex>
+
+        <rollback>
+
+            <dropIndex tableName="event_cache" indexName="stream_id_idx"/>
+            <dropIndex tableName="event_cache" indexName="name_idx"/>
+
+            <dropColumn tableName="event_cache">
+                <column name="name" type="text"/>
+            </dropColumn>
+
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

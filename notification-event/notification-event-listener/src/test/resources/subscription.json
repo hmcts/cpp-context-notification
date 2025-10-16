@@ -1,0 +1,11 @@
+{
+  "subscriptionId": "d06f6539-2a7c-4bc8-bca3-f1b17ebcfa47",
+  "ownerId": "2c2f4447-f54a-4c93-8981-bf7e074cbf84",
+  "created": "2016-09-16T15:53:28.962Z",
+  "filter": {
+    "type": "FIELD",
+    "name": "USER_ID",
+    "value": "e3690064-b74d-41b9-bcd2-1da279752a22",
+    "operation": "EQUALS"
+  }
+}

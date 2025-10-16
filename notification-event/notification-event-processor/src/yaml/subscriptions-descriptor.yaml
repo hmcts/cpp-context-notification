@@ -1,0 +1,472 @@
+subscriptions_descriptor:
+  spec_version: 1.0.0
+  service: notification
+  service_component: EVENT_PROCESSOR
+  subscriptions:
+    - name: notification event processor subscription
+      event_source_name: public.event.source
+      events:
+        - name: public.usersgroups.permission-created
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.usersgroups.permission-deleted
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.link-cases-response
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.documentqueue.document-attached
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.documentqueue.document-attachment-failed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.documentqueue.document-already-attached
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.prosecutioncasefile.events.validation-completed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.prosecutioncasefile.manual-case-received
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.referencedata.event.non-standard-prosecutor-added
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.referencedata.event.non-standard-prosecutor-rejected
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.correspondence.event.case-contact-created
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.correspondence.event.case-contact-updated
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.correspondence.event.case-contact-update-failed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.correspondence.event.case-contact-deleted
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.correspondence.event.case-contact-deletion-failed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.correspondence.event.correspondence-log-entry-created
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.correspondence.event.correspondence-log-entry-updated
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.correspondence.event.correspondence-log-entry-update-failed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.correspondence.event.correspondence-log-entry-deleted
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.correspondence.event.correspondence-log-entry-deletion-failed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.correspondence.event.draft-outbound-correspondence-created
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.correspondence.event.draft-outbound-correspondence-creation-failed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.correspondence.event.finalised-outbound-correspondence-created
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.correspondence.event.outbound-correspondence-resent-failed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.sjp.case-application-recorded
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.court-document-added
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.defence.defence-organisation-disassociated
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.defence.defence-organisation-disassociation-failed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.case-defendant-changed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.defendant-offences-changed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.events.court-document-uploaded
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.events.court-document-removed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.events.case-added-to-crown-court
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.events.case-already-exists-in-crown-court
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.court-application-created
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.listing.hearing-confirmed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.events.hearing-extended
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.events.case-or-application-ejected
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.case-note-added
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.case-note-edited
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.application-note-added
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.application-note-edited
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.events.court-document-updated
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.event.court-document-shared
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.event.all-court-documents-shared
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.event.court-document-share-failed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.case-markers-updated
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.listing.hearing-listed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.boxwork-assignment-changed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.events.cps-prosecutor-updated
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.material.structured-form-operation-successful
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.pet-detail-updated
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.defendant-matched
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.listing.hearing-days-changed-for-hearing
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.listing.hearing-updated
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.listing.hearing-partially-updated
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.listing.court-list-restricted
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.listing.created-listing-note
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.listing.note-edited
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.listing.deleted-listing-note
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.sjp.employer-updated
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.sjp.events.defendant-details-updated
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.sjp.all-financial-means-updated
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.sjp.session-started
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.sjp.case-assigned
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.sjp.case-not-assigned
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.sjp.case-document-added
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.sjp.delete-case-document-request-accepted
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.sjp.delete-case-document-request-rejected
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.sjp.case-note-added
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.sjp.pleas-set
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.sjp.case-update-rejected
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.sjp.case-reopened-in-libra-undone
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.sjp.case-reopened-in-libra-undone-failed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.sjp.cases-management-status-updated
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.plea-updated
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.update-plea-ignored
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.verdict-updated
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.update-verdict-ignored
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.trial-vacated
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.events.hearing.marked-as-duplicate
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.selected-offences-removed-from-existing-hearing
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.defence-counsel-added
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.defence-counsel-change-ignored
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.prosecution-counsel-added
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.prosecution-counsel-change-ignored
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.usersgroups.permission-changed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.result-amendments-validation-failed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.result-amendments-validated
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.result-amendments-cancelled
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.draft-result-deleted-v2
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.result-amendments-rejected
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.approval-rejected
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.approval-requested
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.draft-result-saved
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.save-draft-result-failed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.hearing-locked-by-other-user
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.event-amended
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.events.hearing.hearing-resulted-success
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.hearing-witness-added
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.hearing-already-shared
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.hearing-slots-provisionally-booked
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.stagingenforcement.event.court-rooms-outstanding-fines
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.listing.hearing-changes-saved
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.defendants-welsh-information-recorded
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.defence.defence-organisation-associated
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.defence.event.case-assigned-to-prosecutor
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.defence.event.case-assignment-to-prosecutor-removed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.defence.event.cases-assigned-to-prosecutor
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.defence.event.defence-access-granted
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.defence.event.defence-access-grant-removed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.defence.event.record-instruction-details
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.directionsmanagement.case-direction-created
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.directionsmanagement.case-direction-updated
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.listing.court-application-added-for-hearing
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.sjp.case-legal-soc-checked
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.defence.event.assignee-not-in-allowed-groups
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.defence.event.assignee-for-prosecution-is-defending-case
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.defence.event.user-not-found
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.events.court-document-created
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.defence.event.defence-client-does-not-exist
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.defence.defence-organisation-association-failed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.defence.event.user-already-granted
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.defence.event.grantee-user-not-in-allowed-groups
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.defence.events.grant-access-failed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.defence.event.assignee-for-defence-is-prosecuting-case
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.defence.event.user-already-assigned
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.defence.event.case-assignments-failed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.accused-organisation-received
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.accused-organisation-remove-received
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.accused-organisation-update-received
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.accused-person-received
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.accused-person-remove-received
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.accused-person-update-received
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.case-successfully-registered
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.charged-case-update-received
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.hearing-received
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.hearing-removed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.hearing-update-received
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.offence-removed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.offences-received
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.offence-update-received
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.officer-in-case-update-received
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.officer-in-case-update-rejected
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.organisation-defendant-remove-received
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.organisation-defendant-update-received
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.person-defendant-remove-received
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.person-defendant-update-received
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.person-victim-received
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.person-victim-remove-received
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.person-victim-update-received
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.person-victim-witness-received
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.person-victim-witness-remove-received
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.person-victim-witness-update-received
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.person-witness-received
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.person-witness-remove-received
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.person-witness-update-received
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.precharge-case-update-received
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.proposed-charge-removed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.proposed-charges-received
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasefile.event.proposed-charge-update-received
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasemanagement.event.cases-linked
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.cpscasemanagement.event.cases-unlinked
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.documentqueue.document-status-updated
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.documentqueue.event.document-status-update-failed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.listing.cases-added-to-hearing
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.cotr-archived
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.cotr-created
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.cotr-review-notes-updated
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.defendants-changed-in-cotr
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.edit-form-requested
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.event.form-defendants-updated
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.form-created
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.further-info-for-defence-cotr-added
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.serve-defendant-cotr
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.referencedata.event.sitting-patterns-added
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.sjp.application-decision-set-aside
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.sjp.case-assignment-rejected
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.sjp.dates-to-avoid-added
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.sjp.dates-to-avoid-updated
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.sjp.defendant-details-updates-acknowledged
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.sjp.events.case-document-upload-rejected
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.sjp.offences-withdrawal-status-set
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.subscriptions.event.subscriber-deleted
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.subscriptions.event.subscription-activated-successfully
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.subscriptions.event.subscription-created
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.subscriptions.event.subscription-created-by-user-successfully
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.subscriptions.event.subscription-deactivated-successfully
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.subscriptions.event.subscription-deleted-successfully
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.subscriptions.event.subscription-subscribed-successfully
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.subscriptions.event.subscription-unsubscribed-successfully
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.usergroups.role-created
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.usergroups.role-edited
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.usersgroups.event.banner-created
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.usersgroups.event.banner-deleted
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.usersgroups.role-deleted
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.usersgroups.user-role-assigned
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.usersgroups.user-role-removed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.sjp.case-reserved
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.sjp.case-already-reserved
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.sjp.case-unreserved
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.sjp.case-already-unreserved
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.stagingdvla.event.driver-search-audit-report-deleted
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.stagingdvla.event.driver-search-audit-report-deletion-failed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.stagingdvla.event.driver-search-audit-report-generated
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.hearing-event-logs-document-failed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.hearing-event-logs-document-success
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.event-logged
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.event-timestamp-corrected
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.sjp.events.defendant-pending-changes-accepted
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.sjp.events.defendant-pending-changes-rejected
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.directionsmanagement.add-case-direction-created-updated
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.directionsmanagement.case-directions-statuses-updated
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.breach-applications-to-be-added-to-hearing
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.hearing-breach-applications-added
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.defence.allocation-pleas-added
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.defence.allocation-pleas-updated
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.pet-form-released
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.civil-fees-response
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.court-fee-for-civil-application-updated
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.events.civil-case-exists
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.case-removed-from-group-cases
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.related-reference-added
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.related-reference-deleted
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.listing.hearing-added-to-case
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.manage-results-failed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.listing.hearing-days-sequenced
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.listing.judiciary-changed-for-hearings-status
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.listing.hearings-update-completed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.mireportdata.live-report-generated
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.mireportdata.live-report-generation-failed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+
+

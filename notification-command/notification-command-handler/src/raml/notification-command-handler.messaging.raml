@@ -1,0 +1,14 @@
+#%RAML 0.8
+title: Notification - Command Handler
+baseUri: message://command/handler/message/notification
+
+/notification.handler.command:
+    post:
+        body:
+            application/vnd.notification.subscribe+json:
+                schema: !include json/schema/notification.subscribe.json
+                example: !include json/notification.subscribe.json
+
+            application/vnd.notification.unsubscribe+json:
+                schema: !include json/schema/notification.unsubscribe.json
+                example: !include json/notification.unsubscribe.json

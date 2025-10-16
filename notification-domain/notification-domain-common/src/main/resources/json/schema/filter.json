@@ -1,0 +1,99 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://justice.gov.uk/json/schemas/values/notification/filter.json",
+  "type": "object",
+  "oneOf": [
+    {
+      "$ref": "#/definitions/valueFilter"
+    },
+    {
+      "$ref": "#/definitions/booleanFilter"
+    }
+  ],
+  "definitions": {
+    "valueFilter": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/fieldFilter"
+        },
+        {
+          "$ref": "#/definitions/useridFilter"
+        }
+      ]
+    },
+    "fieldFilter": {
+      "properties": {
+        "type": {
+          "enum": [
+            "FIELD"
+          ]
+        },
+        "name": {
+          "enum": [
+            "STREAM_ID",
+            "USER_ID",
+            "NAME"
+          ]
+        },
+        "value": {
+          "type": "string"
+        },
+        "operation": {
+          "enum": [
+            "EQUALS"
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "name",
+        "value",
+        "operation"
+      ],
+      "additionalProperties": false
+    },
+    "useridFilter": {
+      "properties": {
+        "type": {
+          "enum": [
+            "USER_ID"
+          ]
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "booleanFilter": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "AND",
+            "OR"
+          ]
+        },
+        "value": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/valueFilter"
+              },
+              {
+                "$ref": "#/definitions/booleanFilter"
+              }
+            ]
+          }
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

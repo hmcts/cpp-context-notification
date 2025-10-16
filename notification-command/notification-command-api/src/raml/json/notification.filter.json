@@ -1,0 +1,28 @@
+{
+  "type": "OR",
+  "value": [
+    {
+      "type": "FIELD",
+      "name": "NAME",
+      "value": "uk.gov.justice.json.schemas.domains.notification.FilterUpdated",
+      "operation": "EQUALS"
+    },
+    {
+      "type": "FIELD",
+      "name": "USER_ID",
+      "value": "9b2cc539-fd11-4c4e-82e8-5e660d35877b",
+      "operation": "EQUALS"
+    },
+    {
+      "type": "AND",
+      "value": [
+        {
+          "type": "FIELD",
+          "name": "STREAM_ID",
+          "value": "29c63c0b-2e8c-4d62-b9aa-01974053612a",
+          "operation": "EQUALS"
+        }
+      ]
+    }
+  ]
+}

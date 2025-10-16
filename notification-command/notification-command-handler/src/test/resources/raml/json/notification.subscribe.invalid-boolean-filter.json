@@ -1,0 +1,21 @@
+{
+  "subscriptionId": "d06f6539-2a7c-4bc8-bca3-f1b17ebcfa47",
+  "ownerId": "d06f6539-2a7c-4bc8-bca3-f1b17ebcfa47",
+  "filter": {
+    "type":"INVALID",
+    "value":[
+      {
+        "type":"FIELD",
+        "name":"USER_ID",
+        "value":"testValue",
+        "operation":"EQUALS"
+      },
+      {
+        "type":"FIELD",
+        "name":"STREAM_ID",
+        "value":"testValue",
+        "operation":"EQUALS"
+      }
+    ]
+  }
+}
