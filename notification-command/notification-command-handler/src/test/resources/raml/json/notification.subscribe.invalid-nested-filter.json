@@ -1,0 +1,32 @@
+{
+  "subscriptionId": "d06f6539-2a7c-4bc8-bca3-f1b17ebcfa47",
+  "ownerId": "2c2f4447-f54a-4c93-8981-bf7e074cbf84",
+  "filter": {
+    "type": "AND",
+    "value": [
+      {
+        "type": "FIELD",
+        "name": "USER_ID",
+        "value": "testValue2",
+        "operation": "EQUALS"
+      },
+      {
+        "type": "OR",
+        "value": [
+          {
+            "type": "FIELD",
+            "name": "USER_ID",
+            "value": "testValue",
+            "operation": "EQUALS"
+          },
+          {
+            "type": "FIELD",
+            "name": "STREAM_ID",
+            "value": "testValue",
+            "operation": "EQUALS"
+          }
+        ]
+      }
+    ]
+  }
+}

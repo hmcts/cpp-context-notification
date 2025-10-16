@@ -1,0 +1,1 @@
+java -jar target/notification-viewstore-liquibase-1.0.0-SNAPSHOT.jar --url=jdbc:postgresql://localhost:5432/postgres --username=postgres --password=postgres --logLevel=info update

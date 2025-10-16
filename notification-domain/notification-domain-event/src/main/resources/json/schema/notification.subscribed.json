@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://justice.gov.uk/json/schemas/domains/notification/notification.subscribed.json",
+  "type": "object",
+  "properties": {
+    "subscriptionId": {
+      "$ref": "http://justice.gov.uk/json/schemas/core/data-types.json#/definitions/uuid"
+    },
+    "ownerId": {
+      "$ref": "http://justice.gov.uk/json/schemas/core/data-types.json#/definitions/uuid"
+    },
+    "filter": {
+      "$ref":"http://justice.gov.uk/json/schemas/values/notification/filter.json"
+    },
+    "created": {
+      "$ref": "http://justice.gov.uk/json/schemas/core/data-types.json#/definitions/dateTime"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "subscriptionId",
+    "ownerId",
+    "filter",
+    "created"
+  ]
+}

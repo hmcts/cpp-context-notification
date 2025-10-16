@@ -1,0 +1,15 @@
+subscriptions_descriptor:
+  spec_version: 1.0.0
+  service: notification
+  service_component: EVENT_LISTENER
+  subscriptions:
+    - name: notification event listener subscription
+      events:
+        - name: notification.subscribed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.subscribed.json
+        - name: notification.unsubscribed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.unsubscribed.json
+        - name: notification.filter-updated
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.filter-updated.json
+
+      event_source_name: notification.event.source

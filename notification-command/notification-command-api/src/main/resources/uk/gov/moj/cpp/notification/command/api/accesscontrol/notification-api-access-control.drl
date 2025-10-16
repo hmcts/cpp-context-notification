@@ -1,0 +1,36 @@
+package uk.gov.moj.cpp.notification.command.api.accesscontrol;
+
+import uk.gov.moj.cpp.accesscontrol.drools.Outcome;
+import uk.gov.moj.cpp.accesscontrol.drools.Action;
+
+global uk.gov.moj.cpp.notification.common.accesscontrol.SubscriptionProvider subscriptionProvider;
+global uk.gov.moj.cpp.accesscontrol.common.providers.UserAndGroupProvider userAndGroupProvider;
+
+rule "User must be logged in to subscribe"
+  when
+    $outcome: Outcome();
+    $action: Action(name == "notification.subscribe-by-user-id" );
+    eval($action.userId().isPresent());
+  then
+    $outcome.setSuccess(true);
+end
+
+rule "User must be owner or System User to unsubscribe"
+  when
+    $outcome: Outcome();
+    $action: Action(name == "notification.unsubscribe");
+    eval($action.userId().isPresent());
+    eval(userAndGroupProvider.isSystemUser($action) || (subscriptionProvider.isSubscriptionOwner($action)));
+    then
+    $outcome.setSuccess(true);
+end
+
+rule "User must be logged in to subscribe with filter"
+  when
+    $outcome: Outcome();
+    $action: Action(name == "notification.subscription-filter" );
+    eval($action.userId().isPresent());
+  then
+    $outcome.setSuccess(true);
+end
+

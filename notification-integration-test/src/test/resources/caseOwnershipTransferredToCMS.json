@@ -1,0 +1,18 @@
+{
+  "_metadata": {
+    	"id": "RANDOM_ID",
+     	"name":"notification-added",
+    	"correlation": {
+      		"client": "RANDOM_CORRELATION_ID"
+    	},
+    	"context" : {
+     	 	"session" : "RANDOM_SESSION_ID",
+      		"user" : "RANDOM_USER_ID"
+    	},
+    	"stream": {
+      		"id": "RANDOM_STREAM_ID",
+      		"version": 1
+    	}
+  },
+  "caseId": "RANDOM_CASE_ID"
+}

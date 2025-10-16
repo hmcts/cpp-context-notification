@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>notification-domain</artifactId>
+        <groupId>uk.gov.moj.cpp.notification</groupId>
+        <version>17.0.29-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>notification-domain-event</artifactId>
+
+    <name>Notification Context - Domain Event Module</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>uk.gov.justice.framework-api</groupId>
+            <artifactId>framework-api-domain</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>uk.gov.moj.cpp.notification</groupId>
+            <artifactId>notification-domain-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.json</groupId>
+            <artifactId>javax.json-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+        </dependency>
+
+        <!-- Test dependencies -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava-testlib</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+    <plugins>
+        <plugin>
+            <groupId>uk.gov.justice.generators</groupId>
+            <artifactId>pojo-generation-plugin</artifactId>
+            <executions>
+                <execution>
+                    <id>event-pojo-generation</id>
+                    <configuration>
+                        <excludes>
+                            <exclude>**/notification.subscribed.json</exclude>
+                            <exclude>**/notification.filter-updated.json</exclude>
+                        </excludes>
+                        <skip>false</skip>
+                        <basePackageName>uk.gov.justice.json.schemas</basePackageName>
+                        <sourceDirectory>src/main/resources/json/schema</sourceDirectory>
+                        <generatorProperties implementation="uk.gov.justice.generation.pojo.core.PojoGeneratorProperties">
+                            <typeMappings>
+                                <typeMapping>
+                                    <name>uuid</name>
+                                    <type>reference</type>
+                                    <implementation>java.util.UUID</implementation>
+                                </typeMapping>
+                                <typeMapping>
+                                    <name>filter</name>
+                                    <type>reference</type>
+                                    <implementation>javax.json.JsonObject</implementation>
+                                </typeMapping>
+                                <typeMapping>
+                                    <name>date-time</name>
+                                    <type>format</type>
+                                    <implementation>java.time.ZonedDateTime</implementation>
+                                </typeMapping>
+                            </typeMappings>
+                        </generatorProperties>
+                    </configuration>
+                </execution>
+            </executions>
+            <dependencies>
+                <dependency>
+                    <groupId>${project.groupId}</groupId>
+                    <artifactId>notification-datatypes-common</artifactId>
+                    <version>${project.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>${project.groupId}</groupId>
+                    <artifactId>notification-domain-common</artifactId>
+                    <version>${project.version}</version>
+                </dependency>
+            </dependencies>
+        </plugin>
+    </plugins>
+    </build>
+
+</project>

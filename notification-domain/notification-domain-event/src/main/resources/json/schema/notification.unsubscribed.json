@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://justice.gov.uk/json/schemas/domains/notification/notification.unsubscribed.json",
+  "type": "object",
+  "properties": {
+    "subscriptionId": {
+      "description": "The unique identifier of the subscription to be removed",
+      "$ref": "http://justice.gov.uk/json/schemas/core/data-types.json#/definitions/uuid"
+    }
+  },
+  "required": [
+    "subscriptionId"
+  ],
+  "additionalProperties": false
+}
