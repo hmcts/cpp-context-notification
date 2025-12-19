@@ -469,6 +469,6 @@ subscriptions_descriptor:
         - name: public.mireportdata.live-report-generation-failed
           schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
         - name: public.referencedata.event.judiciary-specialisms-updated
-          schema_uri: http://cpp.moj.gov.uk/referencedata/json/schemas/event/public-judiciary-specialisms-updated.json
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
 
 
