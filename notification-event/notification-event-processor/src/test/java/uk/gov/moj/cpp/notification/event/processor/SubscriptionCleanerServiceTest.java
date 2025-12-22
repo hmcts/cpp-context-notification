@@ -14,7 +14,7 @@ import uk.gov.justice.services.messaging.JsonEnvelope;
 
 import java.util.UUID;
 
-import javax.json.Json;
+import uk.gov.justice.services.messaging.JsonObjects;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
 
@@ -57,19 +57,19 @@ public class SubscriptionCleanerServiceTest {
 
         final UUID subscriptionId2 = randomUUID();
 
-        final JsonObjectBuilder json1 = Json.createObjectBuilder();
+        final JsonObjectBuilder json1 = JsonObjects.createObjectBuilder();
         json1.add("subscriptionId", subscriptionId1.toString());
 
-        final JsonObjectBuilder json2 = Json.createObjectBuilder();
+        final JsonObjectBuilder json2 = JsonObjects.createObjectBuilder();
         json2.add("subscriptionId", subscriptionId2.toString());
 
-        final JsonArrayBuilder jsonArrayBuilder = Json.createArrayBuilder();
+        final JsonArrayBuilder jsonArrayBuilder = JsonObjects.createArrayBuilder();
         jsonArrayBuilder.add(json1);
         jsonArrayBuilder.add(json2);
 
         final JsonEnvelope expiredSubscriptionsResponse = JsonEnvelope.envelopeFrom(
                 metadataWithRandomUUID("notification.query.findExpired"),
-                Json.createObjectBuilder()
+                JsonObjects.createObjectBuilder()
                         .add("expiredSubscriptions", jsonArrayBuilder.build())
                         .build());
 

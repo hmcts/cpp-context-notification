@@ -5,7 +5,7 @@ import static java.lang.String.format;
 import static java.util.Arrays.asList;
 import static java.util.UUID.randomUUID;
 import static java.util.concurrent.TimeUnit.SECONDS;
-import static javax.json.Json.createObjectBuilder;
+import static uk.gov.justice.services.messaging.JsonObjects.createObjectBuilder;
 import static javax.ws.rs.core.Response.Status.ACCEPTED;
 import static javax.ws.rs.core.Response.Status.NOT_FOUND;
 import static javax.ws.rs.core.Response.Status.OK;
@@ -47,7 +47,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
-import javax.json.Json;
+import uk.gov.justice.services.messaging.JsonObjects;
 import javax.json.JsonObject;
 import javax.ws.rs.core.MultivaluedHashMap;
 import javax.ws.rs.core.MultivaluedMap;
@@ -84,28 +84,28 @@ public class ResponseServiceIntegrationTest extends BaseIT {
     private static final UUID COMPLEX_FILTER_STREAM_ID = randomUUID();
     private static final UUID COMPLEX_FILTER_STREAM_ID_2 = randomUUID();
 
-    private static final JsonObject USER_ID_FILTER = Json.createObjectBuilder()
+    private static final JsonObject USER_ID_FILTER = JsonObjects.createObjectBuilder()
             .add("type", FIELD.name())
             .add("name", USER_ID.name())
             .add("value", COMPLEX_FILTER_USER_ID.toString())
             .add("operation", EQUALS.name())
             .build();
 
-    private static final JsonObject STREAM_ID_FILTER_1 = Json.createObjectBuilder()
+    private static final JsonObject STREAM_ID_FILTER_1 = JsonObjects.createObjectBuilder()
             .add("type", FIELD.name())
             .add("name", STREAM_ID.name())
             .add("value", COMPLEX_FILTER_STREAM_ID.toString())
             .add("operation", EQUALS.name())
             .build();
 
-    private static final JsonObject STREAM_ID_FILTER_2 = Json.createObjectBuilder()
+    private static final JsonObject STREAM_ID_FILTER_2 = JsonObjects.createObjectBuilder()
             .add("type", FIELD.name())
             .add("name", STREAM_ID.name())
             .add("value", COMPLEX_FILTER_STREAM_ID_2.toString())
             .add("operation", EQUALS.name())
             .build();
 
-    private static final JsonObject NAME_FILTER = Json.createObjectBuilder()
+    private static final JsonObject NAME_FILTER = JsonObjects.createObjectBuilder()
             .add("type", FIELD.name())
             .add("name", NAME.name())
             .add("value", "public.listing.hearing-changes-saved")
@@ -147,7 +147,7 @@ public class ResponseServiceIntegrationTest extends BaseIT {
         final UUID subscriptionId = randomUUID();
         final UUID stream_id = randomUUID();
 
-        final JsonObject streamIdFilter = Json.createObjectBuilder()
+        final JsonObject streamIdFilter = JsonObjects.createObjectBuilder()
                 .add("type", FIELD.name())
                 .add("name", STREAM_ID.name())
                 .add("value", stream_id.toString())
@@ -185,7 +185,7 @@ public class ResponseServiceIntegrationTest extends BaseIT {
     public void shouldGetEventsForUserIdFilter() {
         final UUID subscriptionId = randomUUID();
 
-        final JsonObject userIdFilter = Json.createObjectBuilder()
+        final JsonObject userIdFilter = JsonObjects.createObjectBuilder()
                 .add("type", FIELD.name())
                 .add("name", USER_ID.name())
                 .add("value", USER_UUID.toString())
@@ -203,7 +203,7 @@ public class ResponseServiceIntegrationTest extends BaseIT {
     public void shouldGetEventsForUserIdFilterUsingSpecialUserFilterType() {
         final UUID subscriptionId = randomUUID();
 
-        final JsonObject userIdFilter = Json.createObjectBuilder()
+        final JsonObject userIdFilter = JsonObjects.createObjectBuilder()
                 .add("type", USER_ID.name())
                 .build();
 
@@ -223,17 +223,17 @@ public class ResponseServiceIntegrationTest extends BaseIT {
         final String filterEventName = "public.listing.hearing-changes-saved";
         final String payload = "eventNameFilter";
 
-        final JsonObject nestedFilter = Json.createObjectBuilder()
+        final JsonObject nestedFilter = JsonObjects.createObjectBuilder()
                 .add("type", FilterType.OR.name())
-                .add("value", Json.createArrayBuilder()
+                .add("value", JsonObjects.createArrayBuilder()
                         .add(USER_ID_FILTER)
                         .add(STREAM_ID_FILTER_1)
                         .build())
                 .build();
 
-        final JsonObject complexFilter = Json.createObjectBuilder()
+        final JsonObject complexFilter = JsonObjects.createObjectBuilder()
                 .add("type", FilterType.AND.name())
-                .add("value", Json.createArrayBuilder()
+                .add("value", JsonObjects.createArrayBuilder()
                         .add(NAME_FILTER)
                         .add(nestedFilter)
                         .build())
@@ -277,7 +277,7 @@ public class ResponseServiceIntegrationTest extends BaseIT {
         final UUID stream_id = randomUUID();
         final UUID stream_id2 = randomUUID();
 
-        final JsonObject streamIdFilter = Json.createObjectBuilder()
+        final JsonObject streamIdFilter = JsonObjects.createObjectBuilder()
                 .add("type", FIELD.name())
                 .add("name", STREAM_ID.name())
                 .add("value", stream_id.toString())
@@ -311,7 +311,7 @@ public class ResponseServiceIntegrationTest extends BaseIT {
                                 withJsonPath("$.events[1].payload", is("streamIdFilter"))
                         )));
 
-        final JsonObject streamIdFilter2 = Json.createObjectBuilder()
+        final JsonObject streamIdFilter2 = JsonObjects.createObjectBuilder()
                 .add("type", FIELD.name())
                 .add("name", NAME.name())
                 .add("value", "public.listing.hearing-changes-saved")
@@ -345,7 +345,7 @@ public class ResponseServiceIntegrationTest extends BaseIT {
 
         final String filterEventName = "public.prosecutioncasefile.events.validation-completed";
         final String payload = "eventNameFilter";
-        final JsonObject eventNameFilter = Json.createObjectBuilder()
+        final JsonObject eventNameFilter = JsonObjects.createObjectBuilder()
                 .add("type", FIELD.name())
                 .add("name", NAME.name())
                 .add("value", filterEventName)
@@ -403,7 +403,7 @@ public class ResponseServiceIntegrationTest extends BaseIT {
                 .withHeader(uk.gov.justice.services.common.http.HeaderConstants.USER_ID, USER_UUID)
                 .build();
 
-        final JsonObject streamIdFilter = Json.createObjectBuilder()
+        final JsonObject streamIdFilter = JsonObjects.createObjectBuilder()
                 .add("type", FIELD.name())
                 .add("name", STREAM_ID.name())
                 .add("value", stream_id.toString())
@@ -440,17 +440,17 @@ public class ResponseServiceIntegrationTest extends BaseIT {
         final String filterEventName = "public.listing.hearing-changes-saved";
         final String payload = "eventNameFilter";
 
-        final JsonObject nestedFilter = Json.createObjectBuilder()
+        final JsonObject nestedFilter = JsonObjects.createObjectBuilder()
                 .add("type", FilterType.OR.name())
-                .add("value", Json.createArrayBuilder()
+                .add("value", JsonObjects.createArrayBuilder()
                         .add(USER_ID_FILTER)
                         .add(STREAM_ID_FILTER_1)
                         .build())
                 .build();
 
-        final JsonObject complexFilter = Json.createObjectBuilder()
+        final JsonObject complexFilter = JsonObjects.createObjectBuilder()
                 .add("type", FilterType.AND.name())
-                .add("value", Json.createArrayBuilder()
+                .add("value", JsonObjects.createArrayBuilder()
                         .add(NAME_FILTER)
                         .add(nestedFilter)
                         .build())
@@ -489,17 +489,17 @@ public class ResponseServiceIntegrationTest extends BaseIT {
                                 withJsonPath("$.events[2].payload", is(payload))
                         )));
 
-        final JsonObject nestedFilter_1 = Json.createObjectBuilder()
+        final JsonObject nestedFilter_1 = JsonObjects.createObjectBuilder()
                 .add("type", FilterType.OR.name())
-                .add("value", Json.createArrayBuilder()
+                .add("value", JsonObjects.createArrayBuilder()
                         .add(USER_ID_FILTER)
                         .add(STREAM_ID_FILTER_2)
                         .build())
                 .build();
 
-        final JsonObject complexFilter_1 = Json.createObjectBuilder()
+        final JsonObject complexFilter_1 = JsonObjects.createObjectBuilder()
                 .add("type", FilterType.AND.name())
-                .add("value", Json.createArrayBuilder()
+                .add("value", JsonObjects.createArrayBuilder()
                         .add(NAME_FILTER)
                         .add(nestedFilter_1)
                         .build())

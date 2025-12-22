@@ -30,7 +30,7 @@ import uk.gov.moj.cpp.notification.integration.test.dataaccess.SubscriptionJdbcI
 
 import java.util.UUID;
 
-import javax.json.Json;
+import uk.gov.justice.services.messaging.JsonObjects;
 import javax.json.JsonObject;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -167,7 +167,7 @@ public class EventQueryIntegrationTest {
     }
 
     private JsonObject getJsonObject(final String attributeName, final String attributeValue) {
-        return Json.createObjectBuilder().add(attributeName, attributeValue).build();
+        return JsonObjects.createObjectBuilder().add(attributeName, attributeValue).build();
     }
 
     private RequestParams getEventsFor(final UUID subscriptionId, final UUID userId) {
