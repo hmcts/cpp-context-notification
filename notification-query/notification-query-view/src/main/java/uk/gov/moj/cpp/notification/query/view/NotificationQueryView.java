@@ -1,7 +1,7 @@
 package uk.gov.moj.cpp.notification.query.view;
 
 import static java.util.Collections.emptyList;
-import static javax.json.Json.createObjectBuilder;
+import static uk.gov.justice.services.messaging.JsonObjects.createObjectBuilder;
 import static uk.gov.justice.services.messaging.Envelope.metadataFrom;
 import static uk.gov.justice.services.messaging.JsonEnvelope.envelopeFrom;
 import static uk.gov.moj.cpp.notification.query.view.FilterService.CLIENT_CORRELATION_ID_PROPERTY_NAME;
