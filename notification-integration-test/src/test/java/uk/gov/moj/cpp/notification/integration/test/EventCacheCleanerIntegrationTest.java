@@ -16,7 +16,7 @@ import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.UUID;
 
-import javax.json.Json;
+import uk.gov.justice.services.messaging.JsonObjects;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -32,7 +32,7 @@ public class EventCacheCleanerIntegrationTest {
     private static final int ONE = 1;
 
     private static final ZonedDateTime CURRENT_TIME = new UtcClock().now();
-    private static final String EVENT_JSON = Json.createObjectBuilder()
+    private static final String EVENT_JSON = JsonObjects.createObjectBuilder()
             .add("userId", randomUUID().toString())
             .add("name", "public.listing.hearing-changes-saved")
             .build()

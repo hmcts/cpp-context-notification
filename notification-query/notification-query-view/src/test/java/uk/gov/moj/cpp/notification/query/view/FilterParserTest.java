@@ -10,42 +10,42 @@ import static uk.gov.moj.cpp.notification.common.OperationType.EQUALS;
 
 import uk.gov.moj.cpp.notification.common.FilterType;
 
-import javax.json.Json;
+import uk.gov.justice.services.messaging.JsonObjects;
 import javax.json.JsonObject;
 
 import org.junit.jupiter.api.Test;
 
 public class FilterParserTest {
 
-    private static final JsonObject USER_ID_FILTER = Json.createObjectBuilder()
+    private static final JsonObject USER_ID_FILTER = JsonObjects.createObjectBuilder()
             .add("type", FIELD.name())
             .add("name", USER_ID.name())
             .add("value", "testUser")
             .add("operation", EQUALS.name())
             .build();
 
-    private static final JsonObject STREAM_ID_FILTER_1 = Json.createObjectBuilder()
+    private static final JsonObject STREAM_ID_FILTER_1 = JsonObjects.createObjectBuilder()
             .add("type", FIELD.name())
             .add("name", STREAM_ID.name())
             .add("value", "streamValue_1")
             .add("operation", EQUALS.name())
             .build();
 
-    private static final JsonObject STREAM_ID_FILTER_2 = Json.createObjectBuilder()
+    private static final JsonObject STREAM_ID_FILTER_2 = JsonObjects.createObjectBuilder()
             .add("type", FIELD.name())
             .add("name", STREAM_ID.name())
             .add("value", "streamValue_2")
             .add("operation", EQUALS.name())
             .build();
 
-    private static final JsonObject STREAM_ID_FILTER_3 = Json.createObjectBuilder()
+    private static final JsonObject STREAM_ID_FILTER_3 = JsonObjects.createObjectBuilder()
             .add("type", FIELD.name())
             .add("name", STREAM_ID.name())
             .add("value", "streamValue_3")
             .add("operation", EQUALS.name())
             .build();
 
-    private static final JsonObject NAME_FILTER = Json.createObjectBuilder()
+    private static final JsonObject NAME_FILTER = JsonObjects.createObjectBuilder()
             .add("type", FIELD.name())
             .add("name", NAME.name())
             .add("value", "eventName")
@@ -61,9 +61,9 @@ public class FilterParserTest {
 
     @Test
     public void shouldBuildFilterQueryForORFieldTypeQuery() {
-        final JsonObject filter = Json.createObjectBuilder()
+        final JsonObject filter = JsonObjects.createObjectBuilder()
                 .add("type", FilterType.OR.name())
-                .add("value", Json.createArrayBuilder()
+                .add("value", JsonObjects.createArrayBuilder()
                         .add(USER_ID_FILTER)
                         .add(STREAM_ID_FILTER_1)
                         .build())
@@ -76,9 +76,9 @@ public class FilterParserTest {
 
     @Test
     public void shouldBuildFilterQueryForANDFieldTypeQuery() {
-        final JsonObject filter = Json.createObjectBuilder()
+        final JsonObject filter = JsonObjects.createObjectBuilder()
                 .add("type", FilterType.AND.name())
-                .add("value", Json.createArrayBuilder()
+                .add("value", JsonObjects.createArrayBuilder()
                         .add(USER_ID_FILTER)
                         .add(STREAM_ID_FILTER_1)
                         .build())
@@ -91,17 +91,17 @@ public class FilterParserTest {
 
     @Test
     public void shouldBuildFilterQueryForNestedAndFieldTypeQuery() {
-        final JsonObject nestedFilter = Json.createObjectBuilder()
+        final JsonObject nestedFilter = JsonObjects.createObjectBuilder()
                 .add("type", FilterType.OR.name())
-                .add("value", Json.createArrayBuilder()
+                .add("value", JsonObjects.createArrayBuilder()
                         .add(USER_ID_FILTER)
                         .add(STREAM_ID_FILTER_1)
                         .build())
                 .build();
 
-        final JsonObject filter = Json.createObjectBuilder()
+        final JsonObject filter = JsonObjects.createObjectBuilder()
                 .add("type", FilterType.AND.name())
-                .add("value", Json.createArrayBuilder()
+                .add("value", JsonObjects.createArrayBuilder()
                         .add(NAME_FILTER)
                         .add(nestedFilter)
                         .build())
@@ -114,18 +114,18 @@ public class FilterParserTest {
 
     @Test
     public void shouldBuildFilterQueryForNestedAndFieldTypeQueryWithMoreThanTwoFiltersPerLevel() {
-        final JsonObject nestedFilter = Json.createObjectBuilder()
+        final JsonObject nestedFilter = JsonObjects.createObjectBuilder()
                 .add("type", FilterType.OR.name())
-                .add("value", Json.createArrayBuilder()
+                .add("value", JsonObjects.createArrayBuilder()
                         .add(STREAM_ID_FILTER_1)
                         .add(STREAM_ID_FILTER_2)
                         .add(STREAM_ID_FILTER_3)
                         .build())
                 .build();
 
-        final JsonObject filter = Json.createObjectBuilder()
+        final JsonObject filter = JsonObjects.createObjectBuilder()
                 .add("type", FilterType.AND.name())
-                .add("value", Json.createArrayBuilder()
+                .add("value", JsonObjects.createArrayBuilder()
                         .add(NAME_FILTER)
                         .add(USER_ID_FILTER)
                         .add(nestedFilter)
@@ -139,32 +139,32 @@ public class FilterParserTest {
 
     @Test
     public void shouldBuildFilterQueryForMultipleNestedLevels() {
-        final JsonObject nestedFilter_3 = Json.createObjectBuilder()
+        final JsonObject nestedFilter_3 = JsonObjects.createObjectBuilder()
                 .add("type", FilterType.OR.name())
-                .add("value", Json.createArrayBuilder()
+                .add("value", JsonObjects.createArrayBuilder()
                         .add(STREAM_ID_FILTER_3)
                         .build())
                 .build();
 
-        final JsonObject nestedFilter_2 = Json.createObjectBuilder()
+        final JsonObject nestedFilter_2 = JsonObjects.createObjectBuilder()
                 .add("type", FilterType.OR.name())
-                .add("value", Json.createArrayBuilder()
+                .add("value", JsonObjects.createArrayBuilder()
                         .add(STREAM_ID_FILTER_2)
                         .add(nestedFilter_3)
                         .build())
                 .build();
 
-        final JsonObject nestedFilter_1 = Json.createObjectBuilder()
+        final JsonObject nestedFilter_1 = JsonObjects.createObjectBuilder()
                 .add("type", FilterType.OR.name())
-                .add("value", Json.createArrayBuilder()
+                .add("value", JsonObjects.createArrayBuilder()
                         .add(STREAM_ID_FILTER_1)
                         .add(nestedFilter_2)
                         .build())
                 .build();
 
-        final JsonObject filter = Json.createObjectBuilder()
+        final JsonObject filter = JsonObjects.createObjectBuilder()
                 .add("type", FilterType.AND.name())
-                .add("value", Json.createArrayBuilder()
+                .add("value", JsonObjects.createArrayBuilder()
                         .add(NAME_FILTER)
                         .add(USER_ID_FILTER)
                         .add(nestedFilter_1)
