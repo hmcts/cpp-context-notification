@@ -80,6 +80,7 @@ public class SubscriptionExpiredIntegrationTest {
         databaseCleaner.cleanStreamBufferTable(CONTEXT_NAME);
         databaseCleaner.cleanEventLogTable(CONTEXT_NAME);
         databaseCleaner.cleanViewStoreTables(CONTEXT_NAME, "subscription", "event_cache");
+        databaseCleaner.cleanProcessedEventTable(CONTEXT_NAME);
         setupUserAsSystemUser(SYSTEM_USER_ID);
     }
 
