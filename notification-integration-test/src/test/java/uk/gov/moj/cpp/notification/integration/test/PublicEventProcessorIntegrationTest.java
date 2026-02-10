@@ -3,7 +3,7 @@ package uk.gov.moj.cpp.notification.integration.test;
 
 import static com.jayway.jsonassert.JsonAssert.with;
 import static java.util.UUID.randomUUID;
-import static javax.json.Json.createObjectBuilder;
+import static uk.gov.justice.services.messaging.JsonObjects.createObjectBuilder;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static uk.gov.justice.services.messaging.JsonEnvelope.envelopeFrom;
@@ -35,6 +35,7 @@ public class PublicEventProcessorIntegrationTest extends BaseIT {
         databaseCleaner.cleanStreamStatusTable(CONTEXT_NAME);
         databaseCleaner.cleanStreamBufferTable(CONTEXT_NAME);
         databaseCleaner.cleanEventLogTable(CONTEXT_NAME);
+        databaseCleaner.cleanProcessedEventTable(CONTEXT_NAME);
     }
 
     @Test

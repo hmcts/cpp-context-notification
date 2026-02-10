@@ -23,6 +23,7 @@ import static uk.gov.moj.cpp.notification.integration.test.dataaccess.WireMockSt
 import static uk.gov.moj.cpp.notification.integration.test.utils.FileUtil.getPayload;
 
 import uk.gov.justice.services.common.converter.StringToJsonObjectConverter;
+import uk.gov.justice.services.messaging.JsonObjects;
 import uk.gov.justice.services.test.utils.core.http.RequestParams;
 import uk.gov.justice.services.test.utils.persistence.DatabaseCleaner;
 import uk.gov.moj.cpp.notification.integration.test.dataaccess.EventJdbcInserter;
@@ -30,7 +31,7 @@ import uk.gov.moj.cpp.notification.integration.test.dataaccess.SubscriptionJdbcI
 
 import java.util.UUID;
 
-import javax.json.Json;
+import uk.gov.justice.services.messaging.JsonObjects;
 import javax.json.JsonObject;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -167,7 +168,7 @@ public class EventQueryIntegrationTest {
     }
 
     private JsonObject getJsonObject(final String attributeName, final String attributeValue) {
-        return Json.createObjectBuilder().add(attributeName, attributeValue).build();
+        return JsonObjects.createObjectBuilder().add(attributeName, attributeValue).build();
     }
 
     private RequestParams getEventsFor(final UUID subscriptionId, final UUID userId) {
