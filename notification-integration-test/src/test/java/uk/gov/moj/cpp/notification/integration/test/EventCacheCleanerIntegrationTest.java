@@ -6,6 +6,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import uk.gov.justice.services.common.util.UtcClock;
+import uk.gov.justice.services.messaging.JsonObjects;
 import uk.gov.justice.services.test.utils.core.random.RandomGenerator;
 import uk.gov.justice.services.test.utils.persistence.DatabaseCleaner;
 import uk.gov.moj.cpp.notification.integration.test.dataaccess.EventCachePoller;
@@ -16,7 +17,7 @@ import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.UUID;
 
-import javax.json.Json;
+import uk.gov.justice.services.messaging.JsonObjects;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -32,7 +33,7 @@ public class EventCacheCleanerIntegrationTest {
     private static final int ONE = 1;
 
     private static final ZonedDateTime CURRENT_TIME = new UtcClock().now();
-    private static final String EVENT_JSON = Json.createObjectBuilder()
+    private static final String EVENT_JSON = JsonObjects.createObjectBuilder()
             .add("userId", randomUUID().toString())
             .add("name", "public.listing.hearing-changes-saved")
             .build()

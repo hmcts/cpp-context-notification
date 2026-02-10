@@ -17,7 +17,7 @@ import uk.gov.moj.cpp.notification.persistence.entity.EventCache;
 import java.util.List;
 import java.util.Optional;
 
-import javax.json.Json;
+import uk.gov.justice.services.messaging.JsonObjects;
 import javax.json.JsonObject;
 
 import org.junit.jupiter.api.Test;
@@ -38,7 +38,7 @@ public class FilteredEventServiceTest {
 
     @Test
     public void shouldFindEventsByQueryFilterWithoutCorrelationId() {
-        final JsonObject filter = Json.createObjectBuilder()
+        final JsonObject filter = JsonObjects.createObjectBuilder()
                 .add("type", FIELD.name())
                 .add("name", USER_ID.name())
                 .add("value", "testUser")
@@ -58,7 +58,7 @@ public class FilteredEventServiceTest {
 
     @Test
     public void shouldFindEventsByQueryFilterUsingClientCorrelationId() {
-        final JsonObject filter = Json.createObjectBuilder()
+        final JsonObject filter = JsonObjects.createObjectBuilder()
                 .add("type", FIELD.name())
                 .add("name", USER_ID.name())
                 .add("value", "testUser")

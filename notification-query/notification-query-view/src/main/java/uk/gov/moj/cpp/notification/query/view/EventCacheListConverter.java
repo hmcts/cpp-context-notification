@@ -1,7 +1,7 @@
 package uk.gov.moj.cpp.notification.query.view;
 
-import static javax.json.Json.createArrayBuilder;
-import static javax.json.Json.createObjectBuilder;
+import static uk.gov.justice.services.messaging.JsonObjects.createArrayBuilder;
+import static uk.gov.justice.services.messaging.JsonObjects.createObjectBuilder;
 
 import uk.gov.justice.services.common.converter.Converter;
 import uk.gov.justice.services.common.converter.StringToJsonObjectConverter;
