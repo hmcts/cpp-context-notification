@@ -1,6 +1,6 @@
 package uk.gov.moj.cpp.notification.command.api;
 
-import static javax.json.Json.createObjectBuilder;
+import static uk.gov.justice.services.messaging.JsonObjects.createObjectBuilder;
 import static uk.gov.justice.services.core.annotation.Component.COMMAND_API;
 import static uk.gov.justice.services.messaging.JsonObjects.createObjectBuilderWithFilter;
 import static uk.gov.moj.cpp.notification.common.FieldNames.USER_ID;
