@@ -1,6 +1,6 @@
 package uk.gov.moj.cpp.notification.common.accesscontrol;
 
-import static javax.json.Json.createObjectBuilder;
+import static uk.gov.justice.services.messaging.JsonObjects.createObjectBuilder;
 import static javax.json.JsonValue.NULL;
 
 import uk.gov.justice.services.core.enveloper.Enveloper;
