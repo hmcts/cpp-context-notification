@@ -34,9 +34,9 @@ public class SubscriptionJdbcPoller {
 
     public void pollUntilNotFound(final UUID subscriptionId) {
         final Poller poller = new Poller(RETRY_COUNT, DELAY_INTERVAL_MILLIS);
-        poller.pollUntilNotFound(() -> subscriptionJdbcFinder.findSubscription(subscriptionId));
-
-        if(subscriptionJdbcFinder.findSubscription(subscriptionId).isPresent()) {
+        try {
+            poller.pollUntilNotFound(() -> subscriptionJdbcFinder.findSubscription(subscriptionId));
+        } catch (AssertionError e) {
             throw new AssertionError("Subscription with subscriptionId " + subscriptionId + " still found in database after " + RETRY_COUNT + " attempts");
         }
     }
