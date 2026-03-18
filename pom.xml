@@ -5,12 +5,12 @@
     <parent>
         <groupId>uk.gov.moj.cpp.common</groupId>
         <artifactId>service-parent-pom</artifactId>
-        <version>17.103.8</version>
+        <version>17.104.0</version>
     </parent>
 
     <groupId>uk.gov.moj.cpp.notification</groupId>
     <artifactId>notification-parent</artifactId>
-    <version>17.103.39-SNAPSHOT</version>
+    <version>17.104.39-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Notification Context - Parent Module</name>
