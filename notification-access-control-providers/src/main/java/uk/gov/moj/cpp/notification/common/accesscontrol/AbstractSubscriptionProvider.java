@@ -14,12 +14,8 @@ import java.util.Optional;
 import javax.inject.Inject;
 import javax.json.JsonObject;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public abstract class AbstractSubscriptionProvider {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(AbstractSubscriptionProvider.class);
     private static final String SUBSCRIPTION_ID_FIELD_NAME = "subscriptionId";
     private static final String SUBSCRIPTION_QUERY = "notification.get-subscription";
 
@@ -35,13 +31,6 @@ public abstract class AbstractSubscriptionProvider {
         final JsonEnvelope envelope = action.envelope();
         final JsonObject payload = envelope.payloadAsJsonObject();
 
-        LOGGER.info("isSubscriptionOwner check - userId.isPresent: {}, userId: {}",
-                userId.isPresent(), userId.orElse("NONE"));
-        LOGGER.info("isSubscriptionOwner check - payload keys: {}, payload: {}",
-                payload.keySet(), payload.toString());
-        LOGGER.info("isSubscriptionOwner check - payload.containsKey(subscriptionId): {}",
-                payload.containsKey(SUBSCRIPTION_ID_FIELD_NAME));
-
         if (userId.isPresent() && payload.containsKey(SUBSCRIPTION_ID_FIELD_NAME)) {
 
             final JsonEnvelope subscriptionQuery = enveloper.withMetadataFrom(envelope, SUBSCRIPTION_QUERY)
@@ -49,20 +38,13 @@ public abstract class AbstractSubscriptionProvider {
 
             final JsonEnvelope subscription = notificationQueryView.getSubscription(subscriptionQuery);
 
-            LOGGER.info("isSubscriptionOwner check - subscription found: {}", subscription != null);
-
             if (subscription == null || NULL.equals(subscription.payload())) {
-                LOGGER.info("isSubscriptionOwner check - returning false (subscription null or empty)");
                 return false;
             }
 
-            final String ownerId = subscription.payloadAsJsonObject().getString("ownerId");
-            final boolean isOwner = userId.get().equals(ownerId);
-            LOGGER.info("isSubscriptionOwner check - ownerId: {}, userId: {}, isOwner: {}",
-                    ownerId, userId.get(), isOwner);
-            return isOwner;
+            return userId.get().equals(
+                    subscription.payloadAsJsonObject().getString("ownerId"));
         }
-        LOGGER.info("isSubscriptionOwner check - returning false (userId not present or subscriptionId not in payload)");
         return false;
     }
 
