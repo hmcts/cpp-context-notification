@@ -3,7 +3,7 @@ package uk.gov.moj.cpp.notification.integration.test.dataaccess;
 import static java.lang.String.format;
 import static java.time.ZonedDateTime.now;
 import static java.util.UUID.randomUUID;
-import static javax.json.Json.createObjectBuilder;
+import static uk.gov.justice.services.messaging.JsonObjects.createObjectBuilder;
 import static uk.gov.justice.services.common.converter.ZonedDateTimes.fromSqlTimestamp;
 import static uk.gov.justice.services.common.converter.ZonedDateTimes.toSqlTimestamp;
 import static uk.gov.moj.cpp.notification.common.FieldNames.USER_ID;
