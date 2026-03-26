@@ -36,6 +36,7 @@ import static uk.gov.moj.cpp.notification.integration.test.dataaccess.WireMockSt
 import uk.gov.justice.services.common.http.HeaderConstants;
 import uk.gov.justice.services.integrationtest.utils.jms.JmsMessageProducerClient;
 import uk.gov.justice.services.messaging.JsonEnvelope;
+import uk.gov.justice.services.messaging.JsonObjects;
 import uk.gov.justice.services.test.utils.core.http.RequestParams;
 import uk.gov.justice.services.test.utils.core.random.RandomGenerator;
 import uk.gov.justice.services.test.utils.core.rest.RestClient;
@@ -118,6 +119,7 @@ public class ResponseServiceIntegrationTest extends BaseIT {
         databaseCleaner.cleanStreamBufferTable(CONTEXT_NAME);
         databaseCleaner.cleanEventLogTable(CONTEXT_NAME);
         databaseCleaner.cleanViewStoreTables(CONTEXT_NAME, "subscription", "event_cache");
+        databaseCleaner.cleanProcessedEventTable(CONTEXT_NAME);
         setupUserAsSystemUser(SYSTEM_USER_ID);
         stubUserWithPermission(randomUUID().toString());
     }

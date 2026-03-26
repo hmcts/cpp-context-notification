@@ -18,6 +18,7 @@ import javax.inject.Inject;
 import javax.json.JsonArray;
 
 import org.slf4j.Logger;
+import uk.gov.justice.services.messaging.JsonObjects;
 
 @ApplicationScoped
 public class SubscriptionCleanerService {
@@ -56,7 +57,7 @@ public class SubscriptionCleanerService {
                 metadataBuilder()
                         .withId(randomUUID())
                         .withName(SUBSCRIPTION_QUERY),
-                createObjectBuilder()
+                JsonObjects.createObjectBuilder()
                         .build());
     }
 
@@ -65,7 +66,7 @@ public class SubscriptionCleanerService {
                 metadataBuilder()
                         .withId(randomUUID())
                         .withName(UNSUBSCRIBE_COMMAND),
-                createObjectBuilder()
+                JsonObjects.createObjectBuilder()
                         .add("subscriptionId", subscriptionId.toString())
                         .build());
     }
