@@ -3,7 +3,7 @@
     <parent>
         <artifactId>notification-parent</artifactId>
         <groupId>uk.gov.moj.cpp.notification</groupId>
-        <version>17.104.39</version>
+        <version>17.104.39-RV-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
