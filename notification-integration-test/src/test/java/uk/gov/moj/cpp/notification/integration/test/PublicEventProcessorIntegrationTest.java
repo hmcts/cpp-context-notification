@@ -35,6 +35,7 @@ public class PublicEventProcessorIntegrationTest extends BaseIT {
         databaseCleaner.cleanStreamStatusTable(CONTEXT_NAME);
         databaseCleaner.cleanStreamBufferTable(CONTEXT_NAME);
         databaseCleaner.cleanEventLogTable(CONTEXT_NAME);
+        databaseCleaner.cleanProcessedEventTable(CONTEXT_NAME);
     }
 
     @Test
