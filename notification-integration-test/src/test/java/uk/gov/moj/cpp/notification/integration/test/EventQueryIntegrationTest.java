@@ -23,6 +23,7 @@ import static uk.gov.moj.cpp.notification.integration.test.dataaccess.WireMockSt
 import static uk.gov.moj.cpp.notification.integration.test.utils.FileUtil.getPayload;
 
 import uk.gov.justice.services.common.converter.StringToJsonObjectConverter;
+import uk.gov.justice.services.messaging.JsonObjects;
 import uk.gov.justice.services.test.utils.core.http.RequestParams;
 import uk.gov.justice.services.test.utils.persistence.DatabaseCleaner;
 import uk.gov.moj.cpp.notification.integration.test.dataaccess.EventJdbcInserter;

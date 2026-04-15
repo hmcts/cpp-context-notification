@@ -8,6 +8,7 @@ import static uk.gov.moj.cpp.notification.common.FieldNames.USER_ID;
 import static uk.gov.moj.cpp.notification.common.FilterType.FIELD;
 import static uk.gov.moj.cpp.notification.common.OperationType.EQUALS;
 
+import uk.gov.justice.services.messaging.JsonObjects;
 import uk.gov.moj.cpp.notification.common.FilterType;
 
 import uk.gov.justice.services.messaging.JsonObjects;
