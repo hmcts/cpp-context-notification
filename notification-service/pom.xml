@@ -3,7 +3,7 @@
     <parent>
         <artifactId>notification-parent</artifactId>
         <groupId>uk.gov.moj.cpp.notification</groupId>
-        <version>17.104.40-SNAPSHOT</version>
+        <version>17.104.40-PEG-3047-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -12,6 +12,10 @@
     <packaging>war</packaging>
 
     <dependencies>
+        <dependency>
+            <groupId>uk.gov.justice.event-store</groupId>
+            <artifactId>event-tracking-discovery</artifactId>
+        </dependency>
         <dependency>
             <groupId>uk.gov.moj.cpp.notification</groupId>
             <artifactId>notification-command-api</artifactId>
