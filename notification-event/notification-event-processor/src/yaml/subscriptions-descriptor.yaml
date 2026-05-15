@@ -458,6 +458,8 @@ subscriptions_descriptor:
           schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
         - name: public.hearing.manage-results-failed
           schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.results-validation-failed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
         - name: public.listing.hearing-days-sequenced
           schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
         - name: public.listing.judiciary-changed-for-hearings-status
