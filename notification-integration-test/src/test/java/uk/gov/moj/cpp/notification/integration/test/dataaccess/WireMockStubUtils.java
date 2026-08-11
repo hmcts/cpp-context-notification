@@ -9,7 +9,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
 import static java.lang.String.format;
 import static java.util.UUID.randomUUID;
 import static org.apache.http.HttpHeaders.CONTENT_TYPE;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.fail;
 import static uk.gov.justice.services.common.http.HeaderConstants.ID;
 
 import uk.gov.justice.service.wiremock.testutil.InternalEndpointMockUtils;

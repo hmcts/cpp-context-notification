@@ -1,29 +1,28 @@
 package uk.gov.moj.cpp.notification.persistence;
 
+import static java.time.ZoneOffset.UTC;
 import static java.time.ZonedDateTime.now;
 import static java.util.UUID.randomUUID;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.nullValue;
 
-import uk.gov.justice.services.test.utils.persistence.BaseTransactionalJunit4Test;
-import uk.gov.justice.services.test.utils.persistence.BaseTransactionalTest;
+import uk.gov.justice.services.test.utils.persistence.HibernateTestEntityManagerProvider;
 import uk.gov.moj.cpp.notification.persistence.entity.Subscription;
 
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.UUID;
 
-import javax.inject.Inject;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
 
-import org.apache.deltaspike.testcontrol.api.junit.CdiTestRunner;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+class SubscriptionRepositoryTest {
 
-@RunWith(CdiTestRunner.class)
-public class SubscriptionRepositoryTest extends BaseTransactionalJunit4Test {
+    private static final String PERSISTENCE_UNIT = "notification-test-persistence-unit";
 
     private static final UUID SUBSCRIPTION_A_UUID = randomUUID();
     private static final UUID SUBSCRIPTION_B_UUID = randomUUID();
@@ -34,23 +33,26 @@ public class SubscriptionRepositoryTest extends BaseTransactionalJunit4Test {
     private static final String SUBSCRIPTION_A_FILTERS = "filterA";
     private static final String SUBSCRIPTION_B_FILTERS = "filterB";
 
-    private static final ZonedDateTime CREATED_A = now();
-    private static final ZonedDateTime CREATED_B = now();
+    @RegisterExtension
+    static HibernateTestEntityManagerProvider hibernateTestEntityManagerProvider =
+            new HibernateTestEntityManagerProvider(PERSISTENCE_UNIT);
+
+    private SubscriptionRepository subscriptionRepository;
 
     private Subscription subscriptionA;
     private Subscription subscriptionB;
 
-    @Inject
-    private SubscriptionRepository subscriptionRepository;
+    @BeforeEach
+    void openEntityManagerAndCreateRepository() {
+        subscriptionRepository = new SubscriptionRepository();
+        hibernateTestEntityManagerProvider.injectEntityManagerInto(subscriptionRepository);
 
-    @Override
-    protected void setUpBefore() {
-        subscriptionA = new Subscription(SUBSCRIPTION_A_UUID, OWNER_ID_A, SUBSCRIPTION_A_FILTERS, CREATED_A);
-        subscriptionB = new Subscription(SUBSCRIPTION_B_UUID, OWNER_ID_B, SUBSCRIPTION_B_FILTERS, CREATED_B);
+        subscriptionA = new Subscription(SUBSCRIPTION_A_UUID, OWNER_ID_A, SUBSCRIPTION_A_FILTERS, now(UTC));
+        subscriptionB = new Subscription(SUBSCRIPTION_B_UUID, OWNER_ID_B, SUBSCRIPTION_B_FILTERS, now(UTC));
     }
 
     @Test
-    public void shouldSaveASubscription() throws Exception {
+    void shouldSaveASubscription() {
 
         subscriptionRepository.save(subscriptionA);
 
@@ -65,7 +67,7 @@ public class SubscriptionRepositoryTest extends BaseTransactionalJunit4Test {
     }
 
     @Test
-    public void shouldDeleteByUUID() throws Exception {
+    void shouldDeleteByPrimaryKey() {
 
         subscriptionRepository.save(subscriptionA);
         subscriptionRepository.save(subscriptionB);
@@ -82,5 +84,22 @@ public class SubscriptionRepositoryTest extends BaseTransactionalJunit4Test {
 
         assertThat(subscriptionRepository.findBy(SUBSCRIPTION_A_UUID), is(nullValue()));
         assertThat(subscriptionRepository.findBy(SUBSCRIPTION_B_UUID), is(notNullValue()));
+    }
+
+    @Test
+    void shouldFindByModifiedLessThan() {
+
+        final ZonedDateTime cutoff = now(UTC);
+
+        final Subscription expired = new Subscription(randomUUID(), randomUUID(), "expired", cutoff.minusHours(2));
+        final Subscription current = new Subscription(randomUUID(), randomUUID(), "current", cutoff.plusHours(2));
+
+        subscriptionRepository.save(expired);
+        subscriptionRepository.save(current);
+
+        final List<Subscription> subscriptions = subscriptionRepository.findByModifiedLessThan(cutoff);
+
+        assertThat(subscriptions, hasSize(1));
+        assertThat(subscriptions.get(0).getId(), is(expired.getId()));
     }
 }

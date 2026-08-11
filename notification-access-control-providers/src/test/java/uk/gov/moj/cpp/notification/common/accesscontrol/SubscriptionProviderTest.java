@@ -26,7 +26,7 @@ import uk.gov.moj.cpp.notification.query.view.NotificationQueryView;
 
 import java.util.List;
 
-import javax.json.JsonValue;
+import jakarta.json.JsonValue;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

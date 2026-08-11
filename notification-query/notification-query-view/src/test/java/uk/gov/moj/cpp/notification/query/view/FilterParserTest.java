@@ -12,7 +12,7 @@ import uk.gov.justice.services.messaging.JsonObjects;
 import uk.gov.moj.cpp.notification.common.FilterType;
 
 import uk.gov.justice.services.messaging.JsonObjects;
-import javax.json.JsonObject;
+import jakarta.json.JsonObject;
 
 import org.junit.jupiter.api.Test;
 
