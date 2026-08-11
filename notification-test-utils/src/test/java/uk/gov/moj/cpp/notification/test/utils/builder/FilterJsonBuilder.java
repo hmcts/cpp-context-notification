@@ -7,7 +7,7 @@ import static uk.gov.justice.services.test.utils.core.random.RandomGenerator.ran
 import uk.gov.moj.cpp.notification.common.FilterType;
 import uk.gov.moj.cpp.notification.common.OperationType;
 
-import javax.json.JsonObject;
+import jakarta.json.JsonObject;
 
 public class FilterJsonBuilder {
 

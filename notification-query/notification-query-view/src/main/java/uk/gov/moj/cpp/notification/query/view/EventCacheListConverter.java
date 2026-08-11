@@ -9,9 +9,9 @@ import uk.gov.moj.cpp.notification.persistence.entity.EventCache;
 
 import java.util.List;
 
-import javax.inject.Inject;
-import javax.json.JsonArrayBuilder;
-import javax.json.JsonObject;
+import jakarta.inject.Inject;
+import jakarta.json.JsonArrayBuilder;
+import jakarta.json.JsonObject;
 
 public class EventCacheListConverter implements Converter<List<EventCache>, JsonObject> {
 

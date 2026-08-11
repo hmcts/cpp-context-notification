@@ -6,8 +6,8 @@ import static uk.gov.moj.cpp.notification.common.FilterType.FIELD;
 
 import uk.gov.moj.cpp.notification.persistence.EventCacheJdbcRepository;
 
-import javax.json.JsonArray;
-import javax.json.JsonObject;
+import jakarta.json.JsonArray;
+import jakarta.json.JsonObject;
 
 public class FilterParser {
 

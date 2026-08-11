@@ -9,8 +9,8 @@ import uk.gov.moj.cpp.notification.persistence.entity.Subscription;
 
 import java.util.List;
 
-import javax.json.JsonArrayBuilder;
-import javax.json.JsonObject;
+import jakarta.json.JsonArrayBuilder;
+import jakarta.json.JsonObject;
 
 public class ExpiredSubscriptionsListConverter implements Converter<List<Subscription>, JsonObject> {
 

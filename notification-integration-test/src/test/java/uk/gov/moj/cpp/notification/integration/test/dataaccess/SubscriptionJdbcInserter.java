@@ -22,7 +22,7 @@ import java.sql.SQLException;
 import java.time.ZonedDateTime;
 import java.util.UUID;
 
-import javax.json.JsonObject;
+import jakarta.json.JsonObject;
 
 public class SubscriptionJdbcInserter {
 
