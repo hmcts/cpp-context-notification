@@ -172,6 +172,12 @@ subscriptions_descriptor:
           schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
         - name: public.hearing.defence-counsel-added
           schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.ptph-detail-saved
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.ptph-detail-finalised
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.hearing.ptph-detail-deleted
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
         - name: public.hearing.defence-counsel-change-ignored
           schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
         - name: public.hearing.prosecution-counsel-added
