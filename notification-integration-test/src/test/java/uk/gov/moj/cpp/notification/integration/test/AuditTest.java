@@ -3,7 +3,7 @@ package uk.gov.moj.cpp.notification.integration.test;
 import static com.jayway.jsonassert.JsonAssert.with;
 import static java.lang.String.format;
 import static java.util.UUID.randomUUID;
-import static javax.ws.rs.core.Response.Status.OK;
+import static jakarta.ws.rs.core.Response.Status.OK;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.core.Is.is;
@@ -23,8 +23,8 @@ import uk.gov.justice.services.test.utils.core.rest.RestClient;
 import java.util.Optional;
 import java.util.UUID;
 
-import javax.ws.rs.core.MultivaluedHashMap;
-import javax.ws.rs.core.MultivaluedMap;
+import jakarta.ws.rs.core.MultivaluedHashMap;
+import jakarta.ws.rs.core.MultivaluedMap;
 
 import org.junit.jupiter.api.Test;
 

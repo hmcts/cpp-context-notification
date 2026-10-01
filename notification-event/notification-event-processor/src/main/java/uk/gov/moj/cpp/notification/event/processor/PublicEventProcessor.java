@@ -11,7 +11,7 @@ import uk.gov.moj.cpp.notification.persistence.entity.EventCache;
 
 import java.util.Objects;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import org.slf4j.Logger;
 

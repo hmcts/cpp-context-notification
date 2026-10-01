@@ -15,7 +15,7 @@ import uk.gov.moj.cpp.notification.persistence.entity.Subscription;
 import java.time.ZonedDateTime;
 import java.util.UUID;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 @ServiceComponent(EVENT_LISTENER)
 public class SubscriptionEventListener {

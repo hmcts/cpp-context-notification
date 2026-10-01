@@ -32,8 +32,8 @@ import liquibase.Liquibase;
 import liquibase.database.jvm.JdbcConnection;
 import liquibase.resource.ClassLoaderResourceAccessor;
 import org.h2.jdbcx.JdbcDataSource;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class EventCacheJdbcRepositoryIT {
 
@@ -49,7 +49,7 @@ public class EventCacheJdbcRepositoryIT {
 
     private EventCacheJdbcRepository jdbcRepository;
 
-    @Before
+    @BeforeEach
     public void initializeDependencies() throws Exception {
 
         final EventCacheJdbcRepositoryConfig eventCacheJdbcRepositoryConfig = mock(EventCacheJdbcRepositoryConfig.class);
@@ -67,7 +67,7 @@ public class EventCacheJdbcRepositoryIT {
         when(viewStoreJdbcDataSourceProvider.getDataSource()).thenReturn(viewStoreDataSource);
     }
 
-    @Before
+    @BeforeEach
     public void initDatabase() throws Exception {
         final Liquibase liquibase = new Liquibase(LIQUIBASE_VIEW_STORE_CHANGELOG_XML,
                 new ClassLoaderResourceAccessor(), new JdbcConnection(viewStoreDataSource.getConnection()));
@@ -213,7 +213,7 @@ public class EventCacheJdbcRepositoryIT {
     private static DataSource anInMemoryDataSource() {
 
         final JdbcDataSource dataSource = new JdbcDataSource();
-        dataSource.setURL("jdbc:h2:mem:test;MV_STORE=FALSE;MVCC=FALSE");
+        dataSource.setURL("jdbc:h2:mem:test");
         dataSource.setUser("sa");
         dataSource.setPassword("sa");
 

@@ -11,24 +11,31 @@ import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.UUID;
 
-import javax.inject.Inject;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
-import org.apache.deltaspike.data.api.AbstractEntityRepository;
-import org.apache.deltaspike.data.api.Repository;
-import org.apache.deltaspike.data.api.criteria.CriteriaSupport;
+@ApplicationScoped
+public class SubscriptionRepository {
 
-@SuppressWarnings("CdiManagedBeanInconsistencyInspection")
-@Repository
-public abstract class SubscriptionRepository extends AbstractEntityRepository<Subscription, UUID> implements CriteriaSupport<Subscription> {
+    @PersistenceContext(unitName = "notification")
+    EntityManager entityManager;
 
     @Inject
     @Value(key = "subscription_expiry_duration_seconds", defaultValue = "28800")
     String subscriptionExpiryDurationSeconds;
 
-    public abstract List<Subscription> findByModifiedLessThan(final ZonedDateTime expiredTime);
+    public List<Subscription> findByModifiedLessThan(final ZonedDateTime expiredTime) {
+        return entityManager.createQuery(
+                        "SELECT s FROM Subscription s WHERE s.modified < :expiredTime",
+                        Subscription.class)
+                .setParameter("expiredTime", expiredTime)
+                .getResultList();
+    }
 
     public List<Subscription> findExpiredSubscriptions() {
-        final ZonedDateTime subscriptionExpired =  now(UTC).minusSeconds(parseInt(subscriptionExpiryDurationSeconds));
+        final ZonedDateTime subscriptionExpired = now(UTC).minusSeconds(parseInt(subscriptionExpiryDurationSeconds));
 
         return findByModifiedLessThan(subscriptionExpired);
     }
@@ -39,5 +46,23 @@ public abstract class SubscriptionRepository extends AbstractEntityRepository<Su
         if (subscription != null) {
             remove(subscription);
         }
+    }
+
+    public Subscription findBy(final UUID id) {
+        return entityManager.find(Subscription.class, id);
+    }
+
+    public List<Subscription> findAll() {
+        return entityManager.createQuery("SELECT s FROM Subscription s", Subscription.class)
+                .getResultList();
+    }
+
+    public Subscription save(final Subscription subscription) {
+        return entityManager.merge(subscription);
+    }
+
+    public void remove(final Subscription subscription) {
+        final Subscription managed = entityManager.contains(subscription) ? subscription : entityManager.merge(subscription);
+        entityManager.remove(managed);
     }
 }

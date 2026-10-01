@@ -5,7 +5,7 @@ import uk.gov.justice.domain.annotation.Event;
 import java.time.ZonedDateTime;
 import java.util.UUID;
 
-import javax.json.JsonObject;
+import jakarta.json.JsonObject;
 
 @Event("notification.filter-updated")
 public class FilterUpdated {

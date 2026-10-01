@@ -1,7 +1,7 @@
 package uk.gov.moj.cpp.notification.common.accesscontrol;
 
 import static uk.gov.justice.services.messaging.JsonObjects.createObjectBuilder;
-import static javax.json.JsonValue.NULL;
+import static jakarta.json.JsonValue.NULL;
 
 import uk.gov.justice.services.core.enveloper.Enveloper;
 import uk.gov.justice.services.core.requester.Requester;
@@ -11,8 +11,8 @@ import uk.gov.moj.cpp.notification.query.view.NotificationQueryView;
 
 import java.util.Optional;
 
-import javax.inject.Inject;
-import javax.json.JsonObject;
+import jakarta.inject.Inject;
+import jakarta.json.JsonObject;
 
 public abstract class AbstractSubscriptionProvider {
 
