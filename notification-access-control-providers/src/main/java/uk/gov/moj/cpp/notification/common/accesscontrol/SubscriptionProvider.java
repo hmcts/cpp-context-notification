@@ -4,8 +4,8 @@ import uk.gov.justice.services.core.annotation.FrameworkComponent;
 import uk.gov.justice.services.core.requester.Requester;
 import uk.gov.moj.cpp.accesscontrol.providers.Provider;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 
 @Provider
 @ApplicationScoped

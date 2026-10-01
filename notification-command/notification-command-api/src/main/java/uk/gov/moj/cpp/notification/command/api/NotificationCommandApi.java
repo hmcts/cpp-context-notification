@@ -22,9 +22,9 @@ import uk.gov.moj.cpp.notification.common.OperationType;
 import java.time.ZonedDateTime;
 import java.util.UUID;
 
-import javax.inject.Inject;
-import javax.json.JsonObject;
-import javax.json.JsonValue;
+import jakarta.inject.Inject;
+import jakarta.json.JsonObject;
+import jakarta.json.JsonValue;
 
 @ServiceComponent(COMMAND_API)
 public class NotificationCommandApi {

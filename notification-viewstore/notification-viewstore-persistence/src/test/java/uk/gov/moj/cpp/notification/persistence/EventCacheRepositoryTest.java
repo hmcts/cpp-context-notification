@@ -4,34 +4,41 @@ import static java.time.LocalDateTime.now;
 import static java.time.ZoneOffset.UTC;
 import static java.time.ZonedDateTime.of;
 import static java.util.UUID.randomUUID;
-import static org.hamcrest.CoreMatchers.hasItem;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
 import static uk.gov.justice.services.test.utils.core.random.RandomGenerator.STRING;
 
-import uk.gov.justice.services.test.utils.persistence.BaseTransactionalJunit4Test;
-import uk.gov.justice.services.test.utils.persistence.BaseTransactionalTest;
+import uk.gov.justice.services.test.utils.persistence.HibernateTestEntityManagerProvider;
 import uk.gov.moj.cpp.notification.persistence.entity.EventCache;
 
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.UUID;
 
-import javax.inject.Inject;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
 
-import org.apache.deltaspike.testcontrol.api.junit.CdiTestRunner;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+class EventCacheRepositoryTest {
 
-@RunWith(CdiTestRunner.class)
-public class EventCacheRepositoryTest extends BaseTransactionalJunit4Test {
+    private static final String PERSISTENCE_UNIT = "notification-test-persistence-unit";
 
-    @Inject
+    @RegisterExtension
+    static HibernateTestEntityManagerProvider hibernateTestEntityManagerProvider =
+            new HibernateTestEntityManagerProvider(PERSISTENCE_UNIT);
+
     private EventCacheRepository eventCacheRepository;
 
+    @BeforeEach
+    void openEntityManagerAndCreateRepository() {
+        eventCacheRepository = new EventCacheRepository();
+        hibernateTestEntityManagerProvider.injectEntityManagerInto(eventCacheRepository);
+    }
+
     @Test
-    public void shouldSaveAnEventCache() throws Exception {
+    void shouldSaveAnEventCache() {
 
         final UUID userId = randomUUID();
         final UUID sessionId = randomUUID();
@@ -57,7 +64,7 @@ public class EventCacheRepositoryTest extends BaseTransactionalJunit4Test {
     }
 
     @Test
-    public void shouldFindAll() throws Exception {
+    void shouldFindAll() {
 
         final EventCache eventCache_1 = anEventCache(randomUUID(), randomUUID(), STRING.next(), randomUUID(), STRING.next());
         final EventCache eventCache_2 = anEventCache(randomUUID(), randomUUID(), STRING.next(), randomUUID(), STRING.next());
@@ -77,7 +84,7 @@ public class EventCacheRepositoryTest extends BaseTransactionalJunit4Test {
     }
 
     @Test
-    public void findByUserId() throws Exception {
+    void shouldFindByUserIdOrderByCreatedDesc() {
 
         final UUID userId = randomUUID();
 
@@ -98,7 +105,7 @@ public class EventCacheRepositoryTest extends BaseTransactionalJunit4Test {
     }
 
     @Test
-    public void findByClientCorrelationId() throws Exception {
+    void shouldFindByClientCorrelationIdOrderByCreatedDesc() {
         final String clientCorrelationId = STRING.next();
 
         final EventCache eventCache_1 = anEventCache(randomUUID(), randomUUID(), clientCorrelationId, randomUUID(), STRING.next());
@@ -118,7 +125,7 @@ public class EventCacheRepositoryTest extends BaseTransactionalJunit4Test {
     }
 
     @Test
-    public void findByStreamId() throws Exception {
+    void shouldFindByStreamIdOrderByCreatedDesc() {
         final UUID streamId = randomUUID();
 
         final EventCache eventCache_1 = anEventCache(randomUUID(), randomUUID(), STRING.next(), streamId, STRING.next());
@@ -138,18 +145,18 @@ public class EventCacheRepositoryTest extends BaseTransactionalJunit4Test {
     }
 
     @Test
-    public void findByEventName() throws Exception {
-        final String event_name = STRING.next();
+    void shouldFindByNameOrderByCreatedDesc() {
+        final String eventName = STRING.next();
 
-        final EventCache eventCache_1 = anEventCache(randomUUID(), randomUUID(), STRING.next(), randomUUID(), event_name);
+        final EventCache eventCache_1 = anEventCache(randomUUID(), randomUUID(), STRING.next(), randomUUID(), eventName);
         final EventCache eventCache_2 = anEventCache(randomUUID(), randomUUID(), STRING.next(), randomUUID(), STRING.next());
-        final EventCache eventCache_3 = anEventCache(randomUUID(), randomUUID(), STRING.next(), randomUUID(), event_name);
+        final EventCache eventCache_3 = anEventCache(randomUUID(), randomUUID(), STRING.next(), randomUUID(), eventName);
 
         eventCacheRepository.save(eventCache_1);
         eventCacheRepository.save(eventCache_2);
         eventCacheRepository.save(eventCache_3);
 
-        final List<EventCache> eventCaches = eventCacheRepository.findByNameOrderByCreatedDesc(event_name);
+        final List<EventCache> eventCaches = eventCacheRepository.findByNameOrderByCreatedDesc(eventName);
 
         assertThat(eventCaches, hasSize(2));
 

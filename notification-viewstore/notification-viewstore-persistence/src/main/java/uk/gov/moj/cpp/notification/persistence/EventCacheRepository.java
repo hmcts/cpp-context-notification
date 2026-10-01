@@ -5,18 +5,54 @@ import uk.gov.moj.cpp.notification.persistence.entity.EventCache;
 import java.util.List;
 import java.util.UUID;
 
-import org.apache.deltaspike.data.api.EntityRepository;
-import org.apache.deltaspike.data.api.Repository;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
-@SuppressWarnings("CdiManagedBeanInconsistencyInspection")
-@Repository
-public interface EventCacheRepository extends EntityRepository<EventCache, UUID> {
+@ApplicationScoped
+public class EventCacheRepository {
 
-    List<EventCache> findByUserIdOrderByCreatedDesc(final UUID userId);
+    @PersistenceContext(unitName = "notification")
+    EntityManager entityManager;
 
-    List<EventCache> findByClientCorrelationIdOrderByCreatedDesc(final String clientCorrelationId);
+    public List<EventCache> findByUserIdOrderByCreatedDesc(final UUID userId) {
+        return entityManager.createQuery(
+                        "SELECT e FROM EventCache e WHERE e.userId = :userId ORDER BY e.created DESC",
+                        EventCache.class)
+                .setParameter("userId", userId)
+                .getResultList();
+    }
 
-    List<EventCache> findByStreamIdOrderByCreatedDesc(final UUID streamId);
+    public List<EventCache> findByClientCorrelationIdOrderByCreatedDesc(final String clientCorrelationId) {
+        return entityManager.createQuery(
+                        "SELECT e FROM EventCache e WHERE e.clientCorrelationId = :clientCorrelationId ORDER BY e.created DESC",
+                        EventCache.class)
+                .setParameter("clientCorrelationId", clientCorrelationId)
+                .getResultList();
+    }
 
-    List<EventCache> findByNameOrderByCreatedDesc(final String eventName);
+    public List<EventCache> findByStreamIdOrderByCreatedDesc(final UUID streamId) {
+        return entityManager.createQuery(
+                        "SELECT e FROM EventCache e WHERE e.streamId = :streamId ORDER BY e.created DESC",
+                        EventCache.class)
+                .setParameter("streamId", streamId)
+                .getResultList();
+    }
+
+    public List<EventCache> findByNameOrderByCreatedDesc(final String eventName) {
+        return entityManager.createQuery(
+                        "SELECT e FROM EventCache e WHERE e.name = :name ORDER BY e.created DESC",
+                        EventCache.class)
+                .setParameter("name", eventName)
+                .getResultList();
+    }
+
+    public List<EventCache> findAll() {
+        return entityManager.createQuery("SELECT e FROM EventCache e", EventCache.class)
+                .getResultList();
+    }
+
+    public EventCache save(final EventCache eventCache) {
+        return entityManager.merge(eventCache);
+    }
 }

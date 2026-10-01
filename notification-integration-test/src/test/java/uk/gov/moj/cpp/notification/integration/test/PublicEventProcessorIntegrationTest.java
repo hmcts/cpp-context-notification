@@ -19,7 +19,7 @@ import static uk.gov.justice.services.integrationtest.utils.jms.JmsMessageProduc
 import java.util.List;
 import java.util.UUID;
 
-import javax.json.JsonObject;
+import jakarta.json.JsonObject;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
