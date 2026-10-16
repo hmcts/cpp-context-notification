@@ -216,6 +216,12 @@ subscriptions_descriptor:
           schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
         - name: public.hearing.hearing-slots-provisionally-booked
           schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        # The refusal half of the booked event above. Both have to be forwarded to the browser:
+        # cpp-ui-hearing waits on the booked name as commandSync's successEvent and on this one as
+        # its errorEvent, so an unregistered failure name leaves the clerk watching a spinner until
+        # the 30s timeout instead of being told the session was refused.
+        - name: public.hearing.hearing-slots-unconfirmed-booking-failed
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
         - name: public.stagingenforcement.event.court-rooms-outstanding-fines
           schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
         - name: public.listing.hearing-changes-saved
