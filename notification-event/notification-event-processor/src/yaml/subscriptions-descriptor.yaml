@@ -80,6 +80,8 @@ subscriptions_descriptor:
           schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
         - name: public.progression.events.hearing-extended
           schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
+        - name: public.progression.event.application-proceedings-edited
+          schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
         - name: public.progression.events.case-or-application-ejected
           schema_uri: http://justice.gov.uk/json/schemas/domains/notification/notification.schema-for-all.json
         - name: public.progression.case-note-added
